@@ -85,7 +85,7 @@ app.post('/Userreg',async(req,res)=>{
        await Usermodel.create(req.body) ;
        res.send("userdetails added");
     }
-    catch{
+    catch(error){
         console.log(error);
     }
 })
@@ -98,7 +98,7 @@ app.post('/Servicereg',async(req,res)=>{
        await Servicemodel.create(req.body) ;
        res.send("service details added");
     }
-    catch{
+    catch(error){
         console.log(error);
     }
 })
@@ -110,16 +110,16 @@ app.post('/UserLogin',async(req,res)=>{
             console.log(req.body)
            let user=await Usermodel.find({emailid:req.body.emailid,password:req.body.password}) ; 
     
-           if(user.length>0)
-           {
-            console.log("login successful");
-            res.json({user})
-           }
-           else{
-            console.log("user not found");
-            res.json({nouser:true})
+                if(user.length>0)
+                    {
+                        console.log("login successful");
+                        res.json({user})
+                    }
+                else{
+                    console.log("user not found");
+                    res.json({nouser:true})
 
-           }
+                }
          } catch (error) {
             console.log(error);
          }

@@ -1,22 +1,17 @@
 const mongoose=require('mongoose');
 const ServiceScema=new mongoose.Schema({
     
-    servicename:{
+ 
+    Location:{
         type:String,
         required:true
     },
-
-
-    username:{
-        type:String,
-        required:true
-    },
-    emailid:{
+    distance:{
         type:String,
         required:true
     
     },
-    password:{
+    messID:{
         type:String,
         required:true
     }

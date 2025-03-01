@@ -17,6 +17,11 @@ const messservice=new mongoose.Schema({
         type:String,
         required:true
     },
+ 
+    Distance:{
+        type:String,
+        required:true
+    },
    
     password:{
         type:String,

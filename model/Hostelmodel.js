@@ -5,18 +5,39 @@ const hostelScema=new mongoose.Schema({
         type:String,
         required:true
     },
-    location:{
+    email:{
         type:String,
         required:true
     },
-    room:{
+    HostalName:{
         type:String,
         required:true
     },
-    price:{
+    mobile :{
         type:String,
         required:true
-    }
+    },
+    rate :{
+        type:String,
+        required:true
+    },
+    distance:{
+        type:String,
+        required:true
+    },
+    rooms:{
+        type:String,
+        required:true
+    },
+    img:{
+        type:String,
+        default:""
+    },
+    password : {
+        type:String,
+        required:true
+    },
+
 
     })
     const hostel=mongoose.model('hostel',hostelScema);

@@ -11,6 +11,7 @@ const Ownermodel=require(`./model/Ownerregmodel`);
 const Servicemodel=require(`./model/Serviceregmodel`);
 const Hostalinfo = require(`./model/HostalInfo`)
 const BookingModal = require(`./model/BookingModal`)
+const FeedBackModal = require('./model/FeedBackModal')
 // const hostelInfoModel = require('./Router/Hostal')
 
 const fav = require('./model/Fav')
@@ -413,6 +414,33 @@ app.get('/get-foodMen-single/:id',async(req,res)=>{
             console.log(error)
     }
 })
+
+app.post('/FeedBack',async(req,res)=>{
+    try{
+    console.log('FeedBack added')
+    console.log(req.body)
+    await FeedBackModal.create(req.body);
+    res.json({added:true})
+    }catch(error){
+        console.log(error);
+        res.json({added:false})
+    }
+})
+app.get("/getFeedBack/:hostelId", async (req, res) => {
+    try {
+      const { hostelId } = req.params;
+      const feedbacks = await FeedBackModal.find({ hosteId: hostelId });
+  
+      if (!feedbacks.length) {
+        return res.status(404).json({ message: "No feedbacks found." });
+      }
+  
+      res.json({ feedbacks });
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ message: "Server error" });
+    }
+  })
 app.listen(port,()=>{
     console.log(`server is running on port ${port}`)
 })
